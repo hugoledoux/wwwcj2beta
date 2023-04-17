@@ -3433,7 +3433,7 @@ These properties may be known by the client upfront, or they may be accessible i
 <p>In case the properties are stored in a CityJSON Object, this object needs to be a valid CityJSON Object.
 This implies that the CityJSON object must contain all the required properties, including <code>"CityObjects"</code> and <code>"vertices"</code>, even though they are empty, because this information is stored in the subsequent CityJSON Features.</p>
 <p>Below is an example of a CityJSONFeature stream (or a JSON Lines text file), with a CityJSON Object storing the metadata and transformation properties, as well as geometry templates:</p>
-<pre class="language-json highlight"><c- p="">{</c-><c- f="">"type"</c-><c- p="">:</c-><c- u="">"CityJSON"</c-><c- p="">,</c-><c- f="">"version"</c-><c- p="">:</c-><c- u="">"1.1"</c-><c- p="">,</c-><c- f="">"transform"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"CityObjects"</c-><c- p="">:{},</c-><c- f="">"metadata"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"vertices"</c-><c- p="">:[],</c-> <c- f="">"geometry-templates"</c-><c- p="">:{</c->...<c- p="">}}</c->
+<pre class="language-json highlight"><c- p="">{</c-><c- f="">"type"</c-><c- p="">:</c-><c- u="">"CityJSON"</c-><c- p="">,</c-><c- f="">"version"</c-><c- p="">:</c-><c- u="">"2.0"</c-><c- p="">,</c-><c- f="">"transform"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"CityObjects"</c-><c- p="">:{},</c-><c- f="">"metadata"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"vertices"</c-><c- p="">:[],</c-> <c- f="">"geometry-templates"</c-><c- p="">:{</c->...<c- p="">}}</c->
 <c- p="">{</c-><c- f="">"type"</c-><c- p="">:</c-><c- u="">"CityJSONFeature"</c-><c- p="">,</c-><c- f="">"id"</c-><c- p="">:</c-><c- u="">"a"</c-><c- p="">,</c-><c- f="">"CityObjects"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"vertices"</c-><c- p="">:[</c->...<c- p="">]}</c-> 
 <c- p="">{</c-><c- f="">"type"</c-><c- p="">:</c-><c- u="">"CityJSONFeature"</c-><c- p="">,</c-><c- f="">"id"</c-><c- p="">:</c-><c- u="">"b"</c-><c- p="">,</c-><c- f="">"CityObjects"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"vertices"</c-><c- p="">:[</c->...<c- p="">]}</c-> 
 <c- p="">{</c-><c- f="">"type"</c-><c- p="">:</c-><c- u="">"CityJSONFeature"</c-><c- p="">,</c-><c- f="">"id"</c-><c- p="">:</c-><c- u="">"c"</c-><c- p="">,</c-><c- f="">"CityObjects"</c-><c- p="">:{</c->...<c- p="">},</c-><c- f="">"vertices"</c-><c- p="">:[</c->...<c- p="">]}</c-> 
@@ -3534,7 +3534,7 @@ In the example below we have two Extensions: one named "Noise" and one named "So
   <c- f="">"description"</c-><c- p="">:</c-> <c- u="">"Extension to model the noise"</c-><c- p="">,</c->
   <c- f="">"url"</c-><c- p="">:</c-> <c- u="">"https://someurl.org/noise.ext.json"</c-><c- p="">,</c->
   <c- f="">"version"</c-><c- p="">:</c-> <c- u="">"0.5"</c-><c- p="">,</c->
-  <c- f="">"versionCityJSON"</c-><c- p="">:</c-> <c- u="">"1.1"</c-><c- p="">,</c->
+  <c- f="">"versionCityJSON"</c-><c- p="">:</c-> <c- u="">"2.0"</c-><c- p="">,</c->
   <c- f="">"extraAttributes"</c-><c- p="">:</c-> <c- p="">{},</c->
   <c- f="">"extraCityObjects"</c-><c- p="">:</c-> <c- p="">{},</c->
   <c- f="">"extraRootProperties"</c-><c- p="">:</c-> <c- p="">{},</c->     

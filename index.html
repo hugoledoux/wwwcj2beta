@@ -1239,14 +1239,15 @@ Possible extra rowspan handling
 			grid-column: 2;
 			width: auto;
 			margin-right: 1rem;
+			border-bottom: 3px solid transparent;
+			margin-bottom: -3px;
 		}
 		#toc .content:hover,
 		#toc .content:focus {
 			background: rgba(75%, 75%, 75%, .25);
 			background: var(--a-hover-bg);
-			border-bottom: 3px solid #054572;
-			border-bottom: 3px solid var(--toclink-underline);
-			margin-bottom: -3px;
+			border-bottom-color: #054572;
+			border-bottom-color: var(--toclink-underline);
 		}
 		#toc li li li .content {
 			margin-left: 1rem;
@@ -1488,9 +1489,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-<meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator"/>
+<meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator"/>
 <link href="https://cityjson.org/specs/" rel="canonical"/>
-<style>/* style-autolinks */
+<style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -1551,8 +1552,16 @@ pre .property::before, pre .property::after {
 [data-link-type=biblio] {
     white-space: pre;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
 </style>
-<style>/* style-colors */
+<style>/* Boilerplate: style-colors */
 
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
 :root {
@@ -1661,175 +1670,6 @@ pre .property::before, pre .property::after {
 
     --editedrec-bg: darkorange;
 }
-</style>
-<style>/* style-counters */
-body {
-    counter-reset: example figure issue;
-}
-.issue {
-    counter-increment: issue;
-}
-.issue:not(.no-marker)::before {
-    content: "Issue " counter(issue);
-}
-
-.example {
-    counter-increment: example;
-}
-.example:not(.no-marker)::before {
-    content: "Example " counter(example);
-}
-.invalid.example:not(.no-marker)::before,
-.illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
-}
-
-figcaption {
-    counter-increment: figure;
-}
-figcaption:not(.no-marker)::before {
-    content: "Figure " counter(figure) " ";
-}
-</style>
-<style>/* style-issues */
-a[href].issue-return {
-    float: right;
-    float: inline-end;
-    color: var(--issueheading-text);
-    font-weight: bold;
-    text-decoration: none;
-}
-</style>
-<style>/* style-md-lists */
-/* This is a weird hack for me not yet following the commonmark spec
-   regarding paragraph and lists. */
-[data-md] > :first-child {
-    margin-top: 0;
-}
-[data-md] > :last-child {
-    margin-bottom: 0;
-}
-</style>
-<style>/* style-selflinks */
-
-:root {
-    --selflink-text: white;
-    --selflink-bg: gray;
-    --selflink-hover-text: black;
-}
-.heading, .issue, .note, .example, li, dt {
-    position: relative;
-}
-a.self-link {
-    position: absolute;
-    top: 0;
-    left: calc(-1 * (3.5rem - 26px));
-    width: calc(3.5rem - 26px);
-    height: 2em;
-    text-align: center;
-    border: none;
-    transition: opacity .2s;
-    opacity: .5;
-}
-a.self-link:hover {
-    opacity: 1;
-}
-.heading > a.self-link {
-    font-size: 83%;
-}
-.example > a.self-link,
-.note > a.self-link,
-.issue > a.self-link {
-    /* These blocks are overflow:auto, so positioning outside
-       doesn't work. */
-    left: auto;
-    right: 0;
-}
-li > a.self-link {
-    left: calc(-1 * (3.5rem - 26px) - 2em);
-}
-dfn > a.self-link {
-    top: auto;
-    left: auto;
-    opacity: 0;
-    width: 1.5em;
-    height: 1.5em;
-    background: var(--selflink-bg);
-    color: var(--selflink-text);
-    font-style: normal;
-    transition: opacity .2s, background-color .2s, color .2s;
-}
-dfn:hover > a.self-link {
-    opacity: 1;
-}
-dfn > a.self-link:hover {
-    color: var(--selflink-hover-text);
-}
-
-a.self-link::before            { content: "¶"; }
-.heading > a.self-link::before { content: "§"; }
-dfn > a.self-link::before      { content: "#"; }
-</style>
-<style>/* style-syntax-highlighting */
-
-code.highlight { padding: .1em; border-radius: .3em; }
-pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-
-.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
-c-[a] { color: #990055 } /* Keyword.Declaration */
-c-[b] { color: #990055 } /* Keyword.Type */
-c-[c] { color: #708090 } /* Comment */
-c-[d] { color: #708090 } /* Comment.Multiline */
-c-[e] { color: #0077aa } /* Name.Attribute */
-c-[f] { color: #669900 } /* Name.Tag */
-c-[g] { color: #222222 } /* Name.Variable */
-c-[k] { color: #990055 } /* Keyword */
-c-[l] { color: #000000 } /* Literal */
-c-[m] { color: #000000 } /* Literal.Number */
-c-[n] { color: #0077aa } /* Name */
-c-[o] { color: #999999 } /* Operator */
-c-[p] { color: #999999 } /* Punctuation */
-c-[s] { color: #a67f59 } /* Literal.String */
-c-[t] { color: #a67f59 } /* Literal.String.Single */
-c-[u] { color: #a67f59 } /* Literal.String.Double */
-c-[cp] { color: #708090 } /* Comment.Preproc */
-c-[c1] { color: #708090 } /* Comment.Single */
-c-[cs] { color: #708090 } /* Comment.Special */
-c-[kc] { color: #990055 } /* Keyword.Constant */
-c-[kn] { color: #990055 } /* Keyword.Namespace */
-c-[kp] { color: #990055 } /* Keyword.Pseudo */
-c-[kr] { color: #990055 } /* Keyword.Reserved */
-c-[ld] { color: #000000 } /* Literal.Date */
-c-[nc] { color: #0077aa } /* Name.Class */
-c-[no] { color: #0077aa } /* Name.Constant */
-c-[nd] { color: #0077aa } /* Name.Decorator */
-c-[ni] { color: #0077aa } /* Name.Entity */
-c-[ne] { color: #0077aa } /* Name.Exception */
-c-[nf] { color: #0077aa } /* Name.Function */
-c-[nl] { color: #0077aa } /* Name.Label */
-c-[nn] { color: #0077aa } /* Name.Namespace */
-c-[py] { color: #0077aa } /* Name.Property */
-c-[ow] { color: #999999 } /* Operator.Word */
-c-[mb] { color: #000000 } /* Literal.Number.Bin */
-c-[mf] { color: #000000 } /* Literal.Number.Float */
-c-[mh] { color: #000000 } /* Literal.Number.Hex */
-c-[mi] { color: #000000 } /* Literal.Number.Integer */
-c-[mo] { color: #000000 } /* Literal.Number.Oct */
-c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
-c-[sc] { color: #a67f59 } /* Literal.String.Char */
-c-[sd] { color: #a67f59 } /* Literal.String.Doc */
-c-[se] { color: #a67f59 } /* Literal.String.Escape */
-c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
-c-[si] { color: #a67f59 } /* Literal.String.Interpol */
-c-[sx] { color: #a67f59 } /* Literal.String.Other */
-c-[sr] { color: #a67f59 } /* Literal.String.Regex */
-c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
-c-[vc] { color: #0077aa } /* Name.Variable.Class */
-c-[vg] { color: #0077aa } /* Name.Variable.Global */
-c-[vi] { color: #0077aa } /* Name.Variable.Instance */
-c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
-</style>
-<style>/* style-darkmode */
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -1942,14 +1782,174 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        which is quite common in practice... */
     img { background: white; }
 }
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selflink-text: black;
-        --selflink-bg: silver;
-        --selflink-hover-text: white;
-    }
+</style>
+<style>/* Boilerplate: style-counters */
+body {
+    counter-reset: example figure issue;
 }
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}
+</style>
+<style>/* Boilerplate: style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* Boilerplate: style-md-lists */
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}
+</style>
+<style>/* Boilerplate: style-selflinks */
+
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
 
 @media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
@@ -2018,11 +2018,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <div class="head">
 <p data-fill-with="logo"></p>
 <h1 class="p-name no-ref" id="title">CityJSON Specifications 2.0.0</h1>
-<h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard, <time class="dt-updated" datetime="2023-04-19">19 April 2023</time></span></h2>
+<h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Living Standard, <time class="dt-updated" datetime="2023-06-22">22 June 2023</time></span></h2>
 <div data-fill-with="spec-metadata">
 <dl>
 <dt>This version:
-     </dt><dd><a class="u-url" href="https://beta.cityjson.org">https://beta.cityjson.org</a>
+     </dt><dd><a class="u-url" href="https://beta.cityjson.org/">https://beta.cityjson.org/</a>
 </dd><dt>Latest published version:
      </dt><dd><a href="https://cityjson.org/specs/">https://cityjson.org/specs/</a>
 </dd><dt>Previous Versions:
@@ -2040,7 +2040,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </div>
 <div class="p-summary" data-fill-with="abstract">
 <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-<p>CityJSON is a data exchange format for digital 3D models of cities and landscapes. It aims at being easy-to-use (for reading, processing, and creating datasets), and it was designed with programmers in mind, so that tools and APIs supporting it can be quickly built. The <a href="https://json.org/">JSON</a>-based encoding of CityJSON is conformant with a subset of the <a href="https://docs.ogc.org/is/20-010/20-010.html">OGC CityGML data model (version 3.0)</a>. Using JSON instead of GML allows us to compress files by a factor 6 and at the same time to simplify greatly the structure of the files.</p>
+<p>CityJSON is a data exchange format for digital 3D models of cities and landscapes. It aims at being easy-to-use (for reading, processing, and creating datasets), and it was designed with programmers in mind, so that tools and APIs supporting it can be quickly built. The <a href="https://json.org/">JSON</a>-based encoding of CityJSON implements a subset of the <a href="https://docs.ogc.org/is/20-010/20-010.html">OGC CityGML data model (version 3.0)</a> and includes a JSON-specific extension mechanism. Using JSON instead of GML allows us to compress files by a factor 6 and at the same time to simplify greatly the structure of the files.</p>
 </div>
 <div data-fill-with="at-risk"></div>
 <nav data-fill-with="table-of-contents" id="toc">
@@ -2110,8 +2110,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </li><li><a href="#case-4-creating-and-or-extending-new-city-objects"><span class="secno">8.6</span> <span class="content">Case 4: Creating and/or extending new City Objects</span></a>
 </li><li><a href="#rules-to-follow-to-define-new-city-objects"><span class="secno">8.7</span> <span class="content">Rules to follow to define new City Objects</span></a>
 </li></ol>
-</li><li><a href="#cityjson-schemas"><span class="secno">9</span> <span class="content">CityJSON Schemas</span></a>
-</li><li><a href="#citygml-v30-conformance"><span class="secno">10</span> <span class="content">CityGML v3.0 conformance</span></a>
+</li><li><a href="#cityjson-schemas"><span class="secno">9</span> <span class="content">CityJSON schemas</span></a>
+</li><li><a href="#citygml-v30-implementation-details"><span class="secno">10</span> <span class="content">CityGML v3.0 implementation details</span></a>
 </li></ol>
 </nav>
 <main>
@@ -2178,14 +2178,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      There are 2 kinds of City Objects: 
     <ol>
 <li data-md="">
-<p><strong>1st-level</strong>: City Objects that can "exist by themselves".</p>
+<p><strong>1st-level</strong>: City Objects that can "exist by themselves" and cannot have a parent.</p>
 </li><li data-md="">
-<p><strong>2nd-level</strong>: City Objects that need to have a <code>"parents"</code> to exist.</p>
+<p><strong>2nd-level</strong>: City Objects that need to have a parent to exist.</p>
 </li></ol>
 <p>This is because the schema of CityGML has been flattened.
 For example, <code>"BuildingInstallation"</code> instances cannot be present in a dataset without being <code>"children"</code> of a <code>"Building"</code>, but a <code>"Building"</code> can be present by itself.</p>
 </div>
-<p>A City Object:</p>
+<p>A City Object (1st or 2nd-level):</p>
 <ul>
 <li data-md="">
 <p><strong>must</strong> have one member with the name <code>"type"</code>. The value is one of the possibilities in the figure above (of type string). If an Extension is used, then the type can be any string starting with a <code>"+"</code>, as explained in <a href="#extensions">§ 8 Extensions</a>.</p>
@@ -2194,16 +2194,14 @@ For example, <code>"BuildingInstallation"</code> instances cannot be present in 
 </li><li data-md="">
 <p><strong>may</strong> have one member with the name <code>"attributes"</code>. The value is an object where the attributes of the City Object are listed.</p>
 </li><li data-md="">
-<p><strong>may</strong> have one member with the name <code>"geographicalExtent"</code> (the axis-aligned bounding box of the City Object). The value is an array with 6 values: <code>[minx, miny, minz, maxx, maxy, maxz]</code></p>
+<p><strong>may</strong> have one member with the name <code>"geographicalExtent"</code>. The value is an array with 6 float values, which represent the axis-aligned bounding box of the City Object: <code>[minx, miny, minz, maxx, maxy, maxz]</code>.</p>
 </li><li data-md="">
-<p><strong>may</strong> have one member with the name <code>"children"</code>. The value is an array of the IDs (of type string) of the 2nd-level City Objects that are part of the 1st-level City Object. Only the direct children of the City Object are listed, not the grandchildren. Also, a City Object can have different types of City Objects as children, eg a <code>"Building"</code> can have both as children <code>"BuildingPart"</code> and <code>"BuildingInstallation"</code>. The order of the children in the array is not relevant.</p>
+<p><strong>may</strong> have one member with the name <code>"children"</code>. The value is an array of the IDs (of type string) of the City Object’s children. The array references only the City Object’s direct children (2nd-level) but not the grandchildren. For instance, the <code>"children"</code> array for the object "id-1" below links to a <code>"BuildingPart"</code> ("id-2") but not to the <code>"BuildingInstallation"</code> ("id-3") which is a child of the <code>"BuildingPart"</code>. A City Object can have different types of City Objects as children, eg a <code>"Building"</code> can have both as children <code>"BuildingPart"</code> and <code>"BuildingInstallation"</code>. The order of the children in the array is not relevant.</p>
 </li></ul>
-<p>A City Object of type 2nd-level:</p>
+<p>Additionally, a 2nd-level City Object:</p>
 <ul>
 <li data-md="">
 <p><strong>must</strong> have one member with the name <code>"parents"</code>. The value is an array with the IDs (of type string) of the City Object’s parents. For the City Objects in the CityJSON core module, this array will always be of size 1 (only one parent). New City Objects defined in extensions can have more than one parent.</p>
-</li><li data-md="">
-<p><strong>may</strong> have one member with the name <code>"children"</code>. The value is an array with the IDs (of type string) of the City Object’s children. The array references only the City Objects that are one level below the current one in the hierarchy. For instance, the <code>"children"</code> array for the object "id-1" below links to a <code>"BuildingPart"</code> but not to the <code>"BuildingInstallation"</code> which is a child of the <code>"BuildingPart"</code>.</p>
 </li></ul>
 <pre class="language-json highlight"><c- f="">"CityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"id-1"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -2248,8 +2246,7 @@ For example, <code>"BuildingInstallation"</code> instances cannot be present in 
 </pre>
 <p>The above example is for a <code>"BuildingPart"</code>, but any 2nd-level City Object can be encoded this way.</p>
 <h3 class="heading settled" data-level="2.1" id="attributes-for-all-city-objects"><span class="secno">2.1. </span><span class="content">Attributes for all City Objects</span><a class="self-link" href="#attributes-for-all-city-objects"></a></h3>
-<p>The attributes for a given City Object are not prescribed (unlike in CityGML).
-This means that the <code>"attributes"</code> is a JSON object and its content is a JSON key-value pair ("owner" in the example above is one such attribute).
+<p>The attributes for a given City Object must be stored in the <code>"attributes"</code> member and, unlike CityGML, they are not prescribed.
 Note that any valid JSON value (including an array and/or object) is a valid attribute value.</p>
 <pre class="language-json highlight"><c- f="">"CityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"id-1"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -2291,11 +2288,12 @@ Note that any valid JSON value (including an array and/or object) is a valid att
 <p><code>"BridgeFurniture"</code></p>
 </li></ul>
 <p>The geometry of both <code>"Bridge"</code> and <code>"BridgePart"</code> can only be represented with these Geometry Objects: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSurface"</code>, (4) <code>"CompositeSurface"</code>.
-The geometry of the four other objects can be represented with any of the Geometry Objects.</p>
-<p>All six City Objects, except <code>"Bridge"</code>, must have a <code>"parents"</code> property.
-The installations and furnitures can have as parents a <code>"Bridge"</code>, a <code>"BridgePart"</code>, or a <code>"BridgeRoom"</code>.</p>
-<p>A City Object of type <code>"Bridge"</code> or <code>"BridgePart"</code> may have a member <code>"address"</code>, whose value is an array of JSON objects listing the potentially several addresses of that bridge .
-The properties of an address JSON object are free, to accommodate the different ways addresses are structured in different countries.</p>
+The geometry of the four other objects can be represented with any Geometry Object.</p>
+<p>All the above City Objects, except <code>"Bridge"</code>, must have a <code>"parents"</code> member.
+The installations and furniture can have as parent a <code>"Bridge"</code>, a <code>"BridgePart"</code>, or a <code>"BridgeRoom"</code>.</p>
+<p>A City Object of type <code>"Bridge"</code> or <code>"BridgePart"</code> may have a member with the name <code>"address"</code>, whose value is an array of JSON objects listing one or more addresses of that bridge.
+The members of an address JSON object are not prescribed, to accommodate the different ways addresses are structured in different countries.
+If a location is necessary then a member with the name <code>"location"</code> can be added to the <code>"address"</code> member, and it should contain a <code>"MultiPoint"</code> geometry.</p>
 <pre class="language-json highlight"><c- f="">"CityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"LondonTower"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Bridge"</c-><c- p="">,</c-> 
@@ -2342,14 +2340,13 @@ The properties of an address JSON object are free, to accommodate the different 
 </li><li data-md="">
 <p><code>"BuildingUnit"</code></p>
 </li></ul>
-<p>The geometry of <code>"Building"</code>, <code>"BuildingPart"</code>, <code>"BuildingStorey"</code>, <code>"BuildingRoom"</code>,
-and <code>"BuildingUnit"</code> can only be represented with these Geometry Objects: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSurface"</code>, (4) <code>"CompositeSurface"</code>.</p>
-<p>All eight City Objects, except <code>"Building"</code>, must have a <code>"parents"</code> property.
-The installations, furniture, and subdivisions can have as parents a <code>"Building"</code>, a <code>"BuildingPart"</code>, or a <code>"BuildingRoom"</code>.</p>
-<p>The geometry of <code>"BuildingInstallation"</code>, <code>"BuildingConstructiveElement"</code>, or <code>"BuildingFurniture"</code> objects can be represented with any of the Geometry Objects.</p>
-<p>A City Object of type <code>"Building"</code>, <code>"BuildingPart"</code> or <code>"BuildingUnit"</code> may have a member <code>"address"</code>, consisting of an array of JSON objects listing one or more addresses of that building (an apartment building could contain several for instance).
-The properties of an address JSON object are free format, to accommodate the different ways addresses are described in different countries.
-If a location is necessary (eg to locate the position of the front door) then a property <code>"location"</code> should be used, and it should contain a <code>"MultiPoint"</code> geometry.</p>
+<p>The geometry of <code>"Building"</code>, <code>"BuildingPart"</code>, <code>"BuildingStorey"</code>, <code>"BuildingRoom"</code>, and <code>"BuildingUnit"</code> can only be represented with these Geometry Objects: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSurface"</code>, (4) <code>"CompositeSurface"</code>.
+The geometry of <code>"BuildingInstallation"</code>, <code>"BuildingConstructiveElement"</code>, or <code>"BuildingFurniture"</code> objects can be represented with any Geometry Object.</p>
+<p>All the above City Objects, except <code>"Building"</code>, must have a <code>"parents"</code> member.
+The <code>"BuildingInstallation"</code>, <code>"BuildingConstructiveElement"</code>, <code>"BuildingFurniture"</code>, <code>"BuildingStorey"</code> can have as parent a <code>"Building"</code>, a <code>"BuildingPart"</code>, or a <code>"BuildingRoom"</code>.</p>
+<p>A City Object of type <code>"Building"</code>, <code>"BuildingPart"</code> or <code>"BuildingUnit"</code> may have a member with the name <code>"address"</code>, whose value is an array of JSON objects listing one or more addresses of that building (an apartment building for instance).
+The members of an address JSON object are not prescribed, to accommodate the different ways addresses are structured in different countries.
+If a location is necessary (eg to locate the position of the front door) then a member with the name <code>"location"</code> can be added to the <code>"address"</code> member, and it should contain a <code>"MultiPoint"</code> geometry.</p>
 <pre class="language-json highlight"><c- f="">"CityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"id-1"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Building"</c-><c- p="">,</c-> 
@@ -2407,7 +2404,7 @@ If a location is necessary (eg to locate the position of the front door) then a 
 </pre>
 <h3 class="heading settled" data-level="2.4" id="cityfurniture"><span class="secno">2.4. </span><span class="content">CityFurniture</span><a class="self-link" href="#cityfurniture"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc32">CityFurniture module</a> for more details. </div>
-<p>The geometry of a City Object of type <code>"CityFurniture"</code> can be any Geometry Object.</p>
+<p>The geometry of a City Object of type <code>"CityFurniture"</code> can be represented with any Geometry Object.</p>
 <pre class="language-json highlight"><c- f="">"mystopsign"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"CityFurniture"</c-><c- p="">,</c-> 
   <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c-> 
@@ -2424,24 +2421,24 @@ If a location is necessary (eg to locate the position of the front door) then a 
 </pre>
 <h3 class="heading settled" data-level="2.5" id="cityobjectgroup"><span class="secno">2.5. </span><span class="content">CityObjectGroup</span><a class="self-link" href="#cityobjectgroup"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc33">CityObjectGroup module</a> for more details. </div>
-<p>The CityGML concept of <em>groups</em>, where City Objects are aggregated based on certain criteria (think of a neighbourhood in a city for instance), is possible in CityJSON.
+<p>The CityGML concept of <em>groups</em>, which is used to aggregate City Objects based on certain criteria (think of a neighbourhood in a city for instance), is also adopted in CityJSON.
 The group is a City Object, and it can contain, if needed, a geometry (the polygon representing the neighbourhood for instance).</p>
 <p>Since a <code>"CityObjectGroup"</code> is also a City Object, it can be part of another group.</p>
 <p>A City Object of type <code>"CityObjectGroup"</code>:</p>
 <ul>
 <li data-md="">
-<p><strong>must</strong> have one member with the name <code>"children"</code>. The value is an array of the IDs of the City Objects that the group contains. As for other City Objects, the City Objects must have the ID of the group in <code>"parents"</code>.</p>
+<p><strong>must</strong> have one member with the name <code>"children"</code>. The value is an array of the IDs (of type string) of the City Objects that the group contains. As for other City Objects, the City Objects must have the ID of the group in their <code>"parents"</code> member.</p>
 </li><li data-md="">
-<p><strong>may</strong> have one member with the name <code>"children_roles"</code>, whose value is an array of strings describing the role of each City Object in the group. This member must be of the same length as that of <code>"children"</code>.</p>
+<p><strong>may</strong> have one member with the name <code>"children_roles"</code>. The value is an array of strings describing the role of each City Object in the group. This member must be of the same length as that of <code>"children"</code>.</p>
 </li><li data-md="">
-<p><strong>may</strong> have one member with the name <code>"attributes"</code>.</p>
+<p><strong>may</strong> have one member with the name <code>"attributes"</code>. The value is an object where the attributes of the City Object are listed.</p>
 </li><li data-md="">
-<p><strong>may</strong> have one member with the name <code>"geometry"</code>. Notice that since the <code>"CityObjectGroup"</code> is a container of different City Objects, the concept of Level of Detail does not apply to it. Nevertheless, the <code>"lod"</code> property is still used for enforcing uniformity with all the other geometries.</p>
+<p><strong>may</strong> have one member with the name <code>"geometry"</code>. The value is an array containing 0 or more Geometry Objects. Notice that since the <code>"CityObjectGroup"</code> is a container of different City Objects, the concept of Level of Detail does not apply to it. Nevertheless, the <code>"lod"</code> member is still used for enforcing uniformity with all the other geometries.</p>
 </li></ul>
 <pre class="language-json highlight"><c- f="">"CityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"my-neighbourhood"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"CityObjectGroup"</c-><c- p="">,</c->
-    <c- f="">"children"</c-><c- p="">:</c-> <c- p="">[</c-><c- u="">"building1"</c-><c- p="">,</c-> <c- u="">"building2"</c-><c- p="">,</c-> <c- u="">"building666"</c-><c- p="">]</c->
+    <c- f="">"children"</c-><c- p="">:</c-> <c- p="">[</c-><c- u="">"building1"</c-><c- p="">,</c-> <c- u="">"building2"</c-><c- p="">,</c-> <c- u="">"building3"</c-><c- p="">]</c->
   <c- p="">}</c->
 <c- p="">}</c->
 </pre>
@@ -2451,7 +2448,7 @@ The group is a City Object, and it can contain, if needed, a geometry (the polyg
     <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c->
       <c- f="">"location"</c-><c- p="">:</c-> <c- u="">"Chibougamau Sud"</c->
     <c- p="">},</c->
-    <c- f="">"children"</c-><c- p="">:</c-> <c- p="">[</c-><c- u="">"building1"</c-><c- p="">,</c-> <c- u="">"building666"</c-><c- p="">],</c->
+    <c- f="">"children"</c-><c- p="">:</c-> <c- p="">[</c-><c- u="">"building1"</c-><c- p="">,</c-> <c- u="">"building3"</c-><c- p="">],</c->
     <c- f="">"children_roles"</c-><c- p="">:</c-> <c- p="">[</c-><c- u="">"residential building"</c-><c- p="">,</c-> <c- u="">"voting location"</c-><c- p="">],</c->
     <c- f="">"geometry"</c-><c- p="">:</c-> <c- p="">[{</c->
       <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"MultiSurface"</c-><c- p="">,</c->
@@ -2464,7 +2461,7 @@ The group is a City Object, and it can contain, if needed, a geometry (the polyg
 <h3 class="heading settled" data-level="2.6" id="genericcityobject"><span class="secno">2.6. </span><span class="content">GenericCityObject</span><a class="self-link" href="#genericcityobject"></a></h3>
 <div class="assertion"> While the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc35">Generics module</a> has different classes for each <a href="https://docs.ogc.org/is/20-010/20-010.html#toc24">space type</a>, CityJSON has only one class to cover all 3 space types. </div>
 <p>This object should be used for objects that are not covered explicitly by any of the CityGML classes.</p>
-<p>The geometry of a City Object of type <code>"GenericCityObject"</code> can be any of the following: <code>"MultiPoint"</code>, <code>"MultiLineString"</code>, <code>"MultiSurface"</code>, <code>"CompositeSurface"</code>, <code>"Solid"</code>, or <code>"CompositeSolid"</code>.</p>
+<p>The geometry of a City Object of type <code>"GenericCityObject"</code> can only be represented with these Geometry Objects: (1) <code>"MultiPoint"</code>, (2) <code>"MultiLineString"</code>, (3) <code>"MultiSurface"</code>, (4) <code>"CompositeSurface"</code>, (5) <code>"Solid"</code>, or (6) <code>"CompositeSolid"</code>.</p>
 <pre class="language-javascript highlight"><c- u="">"whatisthat"</c-><c- o="">:</c-> <c- p="">{</c->
   <c- u="">"type"</c-><c- o="">:</c-> <c- u="">"GenericCityObject"</c-><c- p="">,</c-> 
   <c- u="">"attributes"</c-><c- o="">:</c-> <c- p="">{</c-> 
@@ -2482,7 +2479,7 @@ The group is a City Object, and it can contain, if needed, a geometry (the polyg
 </pre>
 <h3 class="heading settled" data-level="2.7" id="landuse"><span class="secno">2.7. </span><span class="content">LandUse</span><a class="self-link" href="#landuse"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc36">LandUse module</a> for more details. </div>
-<p>The geometry of a City Object of type <code>"LandUse"</code> can be of type <code>"MultiSurface"</code> or <code>"CompositeSurface"</code>.</p>
+<p>The geometry of a City Object of type <code>"LandUse"</code> can only be represented with these Geometry Objects: (1) <code>"MultiSurface"</code> or (2) <code>"CompositeSurface"</code>.</p>
 <pre class="language-json highlight"><c- f="">"oneparcel"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"LandUse"</c-><c- p="">,</c-> 
   <c- f="">"geometry"</c-><c- p="">:</c-> <c- p="">[{</c->
@@ -2514,7 +2511,7 @@ Examples are:</p>
 </li><li data-md="">
 <p>windmill</p>
 </li></ul>
-<p>The geometry of a City Object of type <code>"OtherConstruction"</code> can be any Geometry Object.</p>
+<p>The geometry of a City Object of type <code>"OtherConstruction"</code> can be represented with any Geometry Object.</p>
 <pre class="language-json highlight"><c- f="">"mypylon"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"OtherConstruction"</c-><c- p="">,</c-> 
   <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c-> 
@@ -2532,7 +2529,7 @@ Examples are:</p>
 </pre>
 <h3 class="heading settled" data-level="2.9" id="plantcover"><span class="secno">2.9. </span><span class="content">PlantCover</span><a class="self-link" href="#plantcover"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc40">Vegetation module</a> for more details (PlantCover is one class). </div>
-<p>The geometry of a City Object of type <code>"PlantCover"</code> can be of type: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSolid"</code>, (4) <code>"MultiSurface"</code>, (5) <code>"CompositeSurface"</code>.</p>
+<p>The geometry of a City Object of type <code>"PlantCover"</code> can only be represented with these Geometry Objects: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSolid"</code>, (4) <code>"MultiSurface"</code>, (5) <code>"CompositeSurface"</code>.</p>
 <pre class="language-json highlight"><c- f="">"myplants"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"PlantCover"</c-><c- p="">,</c-> 
   <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c-> 
@@ -2554,7 +2551,7 @@ Examples are:</p>
 </pre>
 <h3 class="heading settled" data-level="2.10" id="solitaryvegetationobject"><span class="secno">2.10. </span><span class="content">SolitaryVegetationObject</span><a class="self-link" href="#solitaryvegetationobject"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc40">Vegetation module</a> for more details (SolitaryVegetationObject is one class). </div>
-<p>The geometry of a City Object of type <code>"SolitaryVegetationObject"</code> can be any Geometry Object.</p>
+<p>The geometry of a City Object of type <code>"SolitaryVegetationObject"</code> can be represented with any Geometry Object.</p>
 <pre class="language-json highlight"><c- f="">"onebigtree"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"SolitaryVegetationObject"</c-><c- p="">,</c-> 
   <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c-> 
@@ -2570,8 +2567,8 @@ Examples are:</p>
 </pre>
 <h3 class="heading settled" data-level="2.11" id="tinrelief"><span class="secno">2.11. </span><span class="content">TINRelief</span><a class="self-link" href="#tinrelief"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc38">Relief module</a> for more details (TINRelief is one class). </div>
-<p>The geometry of a City Object of type <code>"TINRelief"</code> can only be of type <code>"CompositeSurface"</code>.</p>
-<p>CityJSON does not define a specific Geometry Object for a TIN (triangulated irregular network), and is simply a CompositeSurface for which every surface is a triangle (thus a polygon having 3 vertices, and no interior ring).</p>
+<p>The geometry of a City Object of type <code>"TINRelief"</code> can only be represented with the Geometry Object <code>"CompositeSurface"</code>.</p>
+<p>CityJSON does not define a specific Geometry Object for a TIN (triangulated irregular network). It is simply a CompositeSurface for which every surface is a triangle (thus a polygon having 3 vertices, and no interior ring).</p>
 <p>Notice that in practice any <code>"CompositeSurface"</code> is allowed for encoding a terrain, and that arbitrary polygons could also be used (not just triangles).</p>
 <pre class="language-json highlight"><c- f="">"myterrain01"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"TINRelief"</c-><c- p="">,</c-> 
@@ -2618,7 +2615,7 @@ Examples are:</p>
   <c- f="">"geometry"</c-><c- p="">:</c-> <c- p="">[</c->...<c- p="">],</c->
 <c- p="">}</c->
 </pre>
-<p>Similarly, the CityGML classes "TrafficArea", "AuxiliaryTrafficArea", "Marking", and "Hole" are implemented as semantic surface (see <a href="#semantics-of-geometric-primitives">§ 3.3 Semantics of geometric primitives</a>).
+<p>Similarly, the CityGML classes "TrafficArea", "AuxiliaryTrafficArea", "Marking", and "Hole" are implemented as semantic surfaces (see <a href="#semantics-of-geometric-primitives">§ 3.3 Semantics of geometric primitives</a>).
 That is, the surface representing a road should be split into sub-surfaces (therefore forming a <code>"MultiSurface"</code> or a <code>"CompositeSurface"</code>) in which each of the sub-surfaces has semantics.</p>
 <pre class="language-json highlight"><c- f="">"ma_rue"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Road"</c-><c- p="">,</c-> 
@@ -2626,7 +2623,7 @@ That is, the surface representing a road should be split into sub-surfaces (ther
     <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"MultiSurface"</c-><c- p="">,</c->
     <c- f="">"lod"</c-><c- p="">:</c-> <c- u="">"2"</c-><c- p="">,</c->
     <c- f="">"boundaries"</c-><c- p="">:</c-> <c- p="">[</c->
-       <c- p="">[[</c-><c- mi="">0</c-><c- p="">,</c-> <c- mi="">3</c-><c- p="">,</c-> <c- mi="">2</c-><c- p="">,</c-> <c- mi="">1</c-><c- p="">,</c-> <c- mi="">4</c-><c- p="">]],</c-> <c- p="">[[</c-><c- mi="">4</c-><c- p="">,</c-> <c- mi="">5</c-><c- p="">,</c-> <c- mi="">6</c-><c- p="">,</c-> <c- mi="">666</c-><c- p="">,</c-> <c- mi="">12</c-><c- p="">]],</c-> <c- p="">[[</c-><c- mi="">0</c-><c- p="">,</c-> <c- mi="">1</c-><c- p="">,</c-> <c- mi="">5</c-><c- p="">]],</c-> <c- p="">[[</c-><c- mi="">20</c-><c- p="">,</c-> <c- mi="">21</c-><c- p="">,</c-> <c- mi="">75</c-><c- p="">]]</c->
+       <c- p="">[[</c-><c- mi="">0</c-><c- p="">,</c-> <c- mi="">3</c-><c- p="">,</c-> <c- mi="">2</c-><c- p="">,</c-> <c- mi="">1</c-><c- p="">,</c-> <c- mi="">4</c-><c- p="">]],</c-> <c- p="">[[</c-><c- mi="">4</c-><c- p="">,</c-> <c- mi="">5</c-><c- p="">,</c-> <c- mi="">6</c-><c- p="">,</c-> <c- mi="">9</c-><c- p="">,</c-> <c- mi="">12</c-><c- p="">]],</c-> <c- p="">[[</c-><c- mi="">0</c-><c- p="">,</c-> <c- mi="">1</c-><c- p="">,</c-> <c- mi="">5</c-><c- p="">]],</c-> <c- p="">[[</c-><c- mi="">20</c-><c- p="">,</c-> <c- mi="">21</c-><c- p="">,</c-> <c- mi="">75</c-><c- p="">]]</c->
     <c- p="">]</c->
   <c- p="">}],</c->
   <c- f="">"semantics"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -2667,9 +2664,9 @@ That is, the surface representing a road should be split into sub-surfaces (ther
 </li><li data-md="">
 <p><code>"TunnelFurniture"</code></p>
 </li></ul>
-<p>The geometry of both <code>"Tunnel"</code> and <code>"TunnelPart"</code> can only be represented with these Geometry Objects: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSurface"</code>, (4) <code>"CompositeSurface"</code>.</p>
-<p>All six City Objects, except <code>"Tunnel"</code>, must have a <code>"parents"</code> property. <code>"TunnelInstallation"</code>, <code>"TunnelConstructiveElement"</code>, <code>"TunnelHollowSpace"</code>, and <code>"TunnelFurniture"</code> can have as parents a <code>"Tunnel"</code> or a <code>"TunnelPart"</code>.</p>
-<p>The geometry of the other four objects can be represented with any of the Geometry Objects.</p>
+<p>The geometry of both <code>"Tunnel"</code> and <code>"TunnelPart"</code> can only be represented with these Geometry Objects: (1) <code>"Solid"</code>, (2) <code>"CompositeSolid"</code>, (3) <code>"MultiSurface"</code>, (4) <code>"CompositeSurface"</code>.
+The geometry of the other four objects can be represented with any Geometry Object.</p>
+<p>All the above City Objects, except <code>"Tunnel"</code>, must have a <code>"parents"</code> member. <code>"TunnelInstallation"</code>, <code>"TunnelConstructiveElement"</code>, <code>"TunnelHollowSpace"</code>, and <code>"TunnelFurniture"</code> can have as parents a <code>"Tunnel"</code> or a <code>"TunnelPart"</code>.</p>
 <pre class="language-json highlight"><c- f="">"CityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"Lærdalstunnelen"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Tunnel"</c-><c- p="">,</c-> 
@@ -2690,7 +2687,7 @@ That is, the surface representing a road should be split into sub-surfaces (ther
 </pre>
 <h3 class="heading settled" data-level="2.14" id="waterbody"><span class="secno">2.14. </span><span class="content">WaterBody</span><a class="self-link" href="#waterbody"></a></h3>
 <div class="assertion"> See the CityGML v3.0.0 <a href="https://docs.ogc.org/is/20-010/20-010.html#toc42">WaterBody module</a> for more details. </div>
-<p>The geometry of a City Object of type <code>"WaterBody"</code> can be of types: <code>"MultiLineString"</code>, <code>"MultiSurface"</code>, <code>"CompositeSurface"</code>, <code>"Solid"</code>, or <code>"CompositeSolid"</code>.</p>
+<p>The geometry of a City Object of type <code>"WaterBody"</code> can only be represented with these Geometry Objects: (1) <code>"MultiLineString"</code>, (2) <code>"MultiSurface"</code>, (3) <code>"CompositeSurface"</code>, (4) <code>"Solid"</code>, or (5) <code>"CompositeSolid"</code>.</p>
 <pre class="language-json highlight"><c- f="">"mygreatlake"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"WaterBody"</c-><c- p="">,</c-> 
   <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -2706,8 +2703,9 @@ That is, the surface representing a road should be split into sub-surfaces (ther
 <c- p="">}</c->               
 </pre>
 <h2 class="heading settled" data-level="3" id="geometry-objects"><span class="secno">3. </span><span class="content">Geometry Objects</span><a class="self-link" href="#geometry-objects"></a></h2>
-<p>CityJSON defines the following 3D geometric primitives, all of which are embedded in 3D space (and therefore their vertices have <em>(x, y, z)</em> coordinates). The indexing mechanism of the format <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wavefront OBJ</a> is reused, that is a geometry does not store the locations of its vertices, but points to a vertex in a list (property <code>"vertices"</code> in the CityJSON Object).</p>
-<p>As is the case in CityGML, only linear and planar primitives are allowed. No curves or parametric surfaces can be represented.</p>
+<p>CityJSON defines the following 3D geometric primitives, all of which are embedded in 3D space (and therefore their vertices have <em>(x, y, z)</em> coordinates).
+Similarly to the indexing mechanism of the format <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wavefront OBJ</a>, the geometry object does not store the locations of its vertices, but points instead to a vertex in a list (member <code>"vertices"</code> in the CityJSON Object).</p>
+<p>As is the case in CityGML, only linear and planar primitives are allowed; no curves or parametric surfaces can be represented.</p>
 <p>A Geometry object is a JSON object for which the type member’s value is one of the following:</p>
 <ol>
 <li data-md="">
@@ -2744,11 +2742,11 @@ That is, the surface representing a road should be split into sub-surfaces (ther
 </li></ul>
 <div class="note" role="note"> There is <em>no</em> Geometry Object for MultiGeometry. Instead, for the <code>"geometry"</code> member of a CityObject, the different geometries may be enumerated in the array (all with the same value for the member <code>"lod"</code>). </div>
 <h3 class="heading settled" data-level="3.1" id="coordinates-of-the-vertices"><span class="secno">3.1. </span><span class="content">Coordinates of the vertices</span><a class="self-link" href="#coordinates-of-the-vertices"></a></h3>
-<p>A CityJSON must have one member named <code>"vertices"</code>. The value is an array of array of integers representing the coordinates of each vertex of the city model.
+<p>A CityJSON Object must have one member named <code>"vertices"</code>. The value is an array of arrays of 3 integers representing the coordinates of each vertex of the city model.
 The position of a vertex in this array (0-based) is used to represent the <code>"boundaries"</code> of  Geometry Objects.</p>
 <ul>
 <li data-md="">
-<p>one vertex <strong>must</strong> be an array with exactly 3 integers, representing the <em>(x,y,z)</em> location of the vertex before it is transformed to its real-world coordinates (with <a href="#transform-object">§ 4 Transform Object</a>).</p>
+<p>one vertex <strong>must</strong> be an array with exactly 3 integers, representing the <em>(x,y,z)</em> location of the vertex before it is transformed to its real-world coordinates (with the <a href="#transform-object">§ 4 Transform Object</a>).</p>
 </li><li data-md="">
 <p>the array of vertices may be empty.</p>
 </li><li data-md="">
@@ -2771,11 +2769,11 @@ The position of a vertex in this array (0-based) is used to represent the <code>
 </li><li data-md="">
 <p>A <code>"MultiLineString"</code> has an array of arrays, each containing the indices of a LineString.</p>
 </li><li data-md="">
-<p>A <code>"MultiSurface"</code>, or a <code>"CompositeSurface"</code>, has an array containing surfaces, each surface is modelled by an array of array, the first array being the exterior boundary of the surface, and the others the interior boundaries.</p>
+<p>A <code>"MultiSurface"</code>, or a <code>"CompositeSurface"</code>, has an array containing surfaces, each surface is modelled by an array of arrays, the first array being the exterior boundary of the surface, and the others the interior boundaries.</p>
 </li><li data-md="">
-<p>A <code>"Solid"</code> has an array of shells, the first array being the exterior shell of the solid, and the others the interior shells. Each shell has an array of surfaces, modelled in the exact same way as a MultiSurface/CompositeSurface.</p>
+<p>A <code>"Solid"</code> has an array of shells, the first shell being the exterior shell of the solid, and the others the interior shells. Each shell has an array of surfaces, modelled in the exact same way as a MultiSurface/CompositeSurface.</p>
 </li><li data-md="">
-<p>A <code>"MultiSolid"</code>, or a <code>"CompositeSolid"</code>, has an array containing solids, each solid is modelled as above.</p>
+<p>A <code>"MultiSolid"</code>, or a <code>"CompositeSolid"</code>, has an array containing solids. Each solid is modelled as above.</p>
 </li></ul>
 <div class="note" role="note"> JSON does not allow comments, the comments in the example below (C++ style: <code>//-- my comments</code>) are only to explain the cases, and should be removed. </div>
 <pre class="language-json highlight"><c- p="">{</c->
@@ -2905,7 +2903,7 @@ If a geometry is a <code>MultiPoint</code> or a <code>MultiLineString</code>, th
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"+SupportingWall"</c->
 <c- p="">}</c->
 </pre>
-<p>Because in a given City Object (say a <code>"Building"</code>) several primitives can have the same semantics (think of a complex building that has been triangulated, there can be dozens of triangles used to model the same surface), a Semantic Object must be declared once, and each of the primitives that are represented by it points to it. This is achieved by first declaring all the Semantic Objects in an array, and then having an array where each primitive links to Semantic Objects (position in the array).</p>
+<p>Because in a given City Object (say a <code>"Building"</code>) several primitives can have the same semantics (think of a complex building that has been triangulated, there can be dozens of triangles used to represent one planar surface), a Semantic Object can be declared once, and each of the primitives that are represented by it should point to it. This is achieved by first declaring all the Semantic Objects in an array, and then having an array where each primitive links to a Semantic Object (position in the array).</p>
 <p>If a Geometry object has semantics, then the Geometry object:</p>
 <ul>
 <li data-md="">
@@ -2918,7 +2916,7 @@ If a geometry is a <code>MultiPoint</code> or a <code>MultiLineString</code>, th
 </li><li data-md="">
 <p>the value of <code>"values"</code> is a hierarchy of arrays with integers. The depth depends on the Geometry object: for <code>MultiPoint</code> and <code>MultiLineString</code> this is a simple array of integers; for any other geometry type it is two less than the array <code>"boundaries"</code>. An integer refers to the index in the <code>"surfaces"</code> array of the same geometry, and it is 0-based. If one surface has no semantics, a value of <code>null</code> must be used.</p>
 </li></ul>
-<div class="note" role="note"> For legacy reasons, we use <code>"surfaces"</code> to name the array of Semantic Object. Nevertheless, this property is used for points and linestrings of <code>MultiPoints</code> and <code>MultiLineStrings</code>, as well. </div>
+<div class="note" role="note"> For legacy reasons, we use <code>"surfaces"</code> to name the array of Semantic Objects. Nevertheless, this member is used for points and linestrings of <code>MultiPoints</code> and <code>MultiLineStrings</code>, as well. </div>
 <pre class="language-json highlight"><c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"MultiSurface"</c-><c- p="">,</c->
   <c- f="">"lod"</c-><c- p="">:</c-> <c- u="">"2"</c-><c- p="">,</c->
@@ -2982,7 +2980,7 @@ If a geometry is a <code>MultiPoint</code> or a <code>MultiLineString</code>, th
  <c- p="">}</c->  
 </pre>
 <h3 class="heading settled" data-level="3.4" id="geometry-templates"><span class="secno">3.4. </span><span class="content">Geometry templates</span><a class="self-link" href="#geometry-templates"></a></h3>
-<p>CityGML’s "ImplicitGeometries", better known in computer graphics as <em>templates</em>, are one method to compress files since the geometries (such as benches, lamp posts, and trees), need only be defined once.
+<p>CityGML’s "ImplicitGeometries", better known in computer graphics as <em>templates</em>, are one method of compressing files since the geometries (such as benches, lamp posts, and trees) need to be defined only once.
 In CityJSON, they are implemented differently from what is specified in CityGML: they are defined separately in the file, and each template can be reused. 
 By contrast, in CityGML, the geometry used for a given City Object is reused by other City Objects, there is thus no central location where all templates are stored.</p>
 <p>The Geometry Templates are defined as a JSON object that:</p>
@@ -2990,7 +2988,7 @@ By contrast, in CityGML, the geometry used for a given City Object is reused by 
 <li data-md="">
 <p><strong>must</strong> have one member with the name <code>"templates"</code>. The value is an array of Geometry Objects.</p>
 </li><li data-md="">
-<p><strong>must</strong> have one member with the name <code>"vertices-templates"</code>. The value is an array of coordinates of each vertex of the templates (0-based indexing). The reason the vertices index are not global is to ensure that operations on the vertices (eg for CRS transformation, for <a href="#transform-object">§ 4 Transform Object</a>, or calculating the bounding box of a dataset) will not be affected by the templates (since they will often be defined locally, and translated/rotated/scaled to their final position).</p>
+<p><strong>must</strong> have one member with the name <code>"vertices-templates"</code>. The value is an array of coordinates of each vertex of the templates (0-based indexing). The reason the vertices' indices are not global is to ensure that operations on the vertices (eg for CRS transformation, for <a href="#transform-object">§ 4 Transform Object</a>, or calculating the bounding box of a dataset) will not be affected by the templates (since they will often be defined locally, and translated/rotated/scaled to their final position).</p>
 </li></ul>
 <p>Observe that the geometry of a template can have semantic surfaces, and that appearances can be assigned to it.</p>
 <pre class="language-json highlight"><c- f="">"geometry-templates"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -3036,7 +3034,7 @@ A new JSON object of type <code>"GeometryInstance"</code> is defined, and it:</p
 <li data-md="">
 <p><strong>must</strong> have one member with the name <code>"template"</code>, whose value is the position of the template in the <code>"geometry-templates"</code> (0-indexing).</p>
 </li><li data-md="">
-<p><strong>must</strong> have one member with the name <code>"boundaries"</code>, whose value is an array containing only one vertex index, which refers to one vertex in the <code>"vertices"</code> property of a CityJSON file. (This is the reference point from which the transformations are applied, it is the "referencePoint" in CityGML.)</p>
+<p><strong>must</strong> have one member with the name <code>"boundaries"</code>, whose value is an array containing only one vertex index, which refers to one vertex in the <code>"vertices"</code> member of a CityJSON file. (This is the reference point from which the transformations are applied, it is the "referencePoint" in CityGML.)</p>
 </li><li data-md="">
 <p><strong>must</strong> have one member with the name <code>"transformationMatrix"</code>, whose value is a 4x4 matrix (thus 16 values in an array) defining the rotation/translation/scaling of the template. Note that these 16 values are ordered row-by-row, as the example below shows.</p>
 </li></ul>
@@ -3059,24 +3057,25 @@ A new JSON object of type <code>"GeometryInstance"</code> is defined, and it:</p
 </pre>
 <div class="note" role="note"> The CityJSON website has a <a href="https://www.cityjson.org/dev/geom-templates/">page to help developers with Geometry Templates</a>, it contains simple examples, explains which transformations to apply to obtain world coordinates, and explains how matrices work (for instance, in the example above, a scaling of 2.0 is applied). </div>
 <h2 class="heading settled" data-level="4" id="transform-object"><span class="secno">4. </span><span class="content">Transform Object</span><a class="self-link" href="#transform-object"></a></h2>
-<p>To reduce the size of a CityJSON object (and thus the size of files) and to ensure that only a fixed number of digits is stored for the coordinates of the geometries, the coordinates of the vertices of the geometries are represented integer values.
+<p>To reduce the size of a CityJSON object (and thus the size of files) and to ensure that only a fixed number of digits is stored for the coordinates of the geometries, the coordinates of the vertices of the geometries are represented with integer values.
 We therefore need to store the scale factor and the translation needed to obtain the original coordinates (stored with floats/doubles).</p>
-<p>A CityJSON object must therefore have one member <code>"transform"</code>, whose values are 2 mandatory JSON objects (<code>"scale"</code> and <code>"translate"</code>), both arrays with 3 values.</p>
-<p>The <a href="https://github.com/topojson/topojson-specification/blob/master/README.md#212-transforms">scheme of TopoJSON (called quantization)</a> is reused, and here we simply add a third coordinate because our vertices are embedded in 3D space.</p>
-<p>It should be noticed that only the <code>"vertices"</code> at the root of the CityJSON object are affected by the transformation, the vertices for the Geometric templates and textures are not.</p>
-<p>To obtain the real position of a given vertex <em>v</em>, we must take the 3 values <em>vi</em> listed in the <code>"vertices"</code> member and:</p>
-<pre>v[0] = (vi[0] * ["transform"]["scale"][0]) + ["transform"]["translate"][0]
-v[1] = (vi[1] * ["transform"]["scale"][1]) + ["transform"]["translate"][1]
-v[2] = (vi[2] * ["transform"]["scale"][2]) + ["transform"]["translate"][2]
-</pre>
-<p>The following <code>"transform"</code> means that 2 important digits are kept (thus millimetre level if meters are the units of the CRS), and the <code>"translate"</code> usually matches with the minimum values of the axis-aligned bounding box (but does not need to).</p>
+<p>In the example below, the <code>"scale"</code> member indicates that 3 important digits are kept (thus millimetre level if meters are the units of the CRS).
+The values of the <code>"translate"</code> member usually matches with the minimum values of the axis-aligned bounding box (but does not need to).</p>
 <pre class="language-json highlight"><c- f="">"transform"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"scale"</c-><c- p="">:</c-> <c- p="">[</c-><c- mf="">0.001</c-><c- p="">,</c-> <c- mf="">0.001</c-><c- p="">,</c-> <c- mf="">0.001</c-><c- p="">],</c->
     <c- f="">"translate"</c-><c- p="">:</c-> <c- p="">[</c-><c- mf="">442464.879</c-><c- p="">,</c-> <c- mf="">5482614.692</c-><c- p="">,</c-> <c- mf="">310.19</c-><c- p="">]</c->
 <c- p="">}</c->
 </pre>
+<p>A CityJSON object must therefore have one member <code>"transform"</code>, whose values are 2 mandatory JSON objects, <code>"scale"</code> and <code>"translate"</code>, both arrays with 3 values.</p>
+<p>The <a href="https://github.com/topojson/topojson-specification/blob/master/README.md#212-transforms">scheme of TopoJSON (called quantization)</a> is reused, and here we simply add a third coordinate because our vertices are embedded in 3D space.</p>
+<p>It should be noticed that only the <code>"vertices"</code> at the root of the CityJSON object are affected by the transformation, the vertices for the Geometric templates and textures are not.</p>
+<p>We can obtain the real coordinates of a given vertex <em>v</em>, from the <em>vi</em> values listed in the <code>"vertices"</code> member as follows:</p>
+<pre>v[0] = (vi[0] * ["transform"]["scale"][0]) + ["transform"]["translate"][0]
+v[1] = (vi[1] * ["transform"]["scale"][1]) + ["transform"]["translate"][1]
+v[2] = (vi[2] * ["transform"]["scale"][2]) + ["transform"]["translate"][2]
+</pre>
 <h2 class="heading settled" data-level="5" id="metadata"><span class="secno">5. </span><span class="content">Metadata</span><a class="self-link" href="#metadata"></a></h2>
-<p>The core of CityJSON supports the following six properties, these are compliant with the international standard <a href="https://www.iso.org/standard/53798.html">ISO19115</a>.</p>
+<p>The core of CityJSON supports the following six properties, which are compliant with the international standard <a href="https://www.iso.org/standard/53798.html">ISO19115</a>.</p>
 <pre class="language-json highlight"><c- f="">"metadata"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"geographicalExtent"</c-><c- p="">:</c-> <c- p="">[</c-> <c- mf="">84710.1</c-><c- p="">,</c-> <c- mf="">446846.0</c-><c- p="">,</c-> <c- mf="">-5.3</c-><c- p="">,</c-> <c- mf="">84757.1</c-><c- p="">,</c-> <c- mf="">446944.0</c-><c- p="">,</c-> <c- mf="">40.9</c-> <c- p="">],</c->
   <c- f="">"identifier"</c-><c- p="">:</c-> <c- u="">"eaeceeaa-3f66-429a-b81d-bbc6140b8c1c"</c-><c- p="">,</c->
@@ -3105,14 +3104,14 @@ v[2] = (vi[2] * ["transform"]["scale"][2]) + ["transform"]["translate"][2]
 <h3 class="heading settled" data-level="5.1" id="geographicalextent-bbox"><span class="secno">5.1. </span><span class="content">geographicalExtent (bbox)</span><a class="self-link" href="#geographicalextent-bbox"></a></h3>
 <p>While the geographical extent can be computed from the dataset itself, it is often useful to store it.
 It may be stored as an array with 6 values: <code>[minx, miny, minz, maxx, maxy, maxz]</code>.
-Notice that these are in the real coordinates of the dataset (based on <a href="#referencesystem-crs">§ 5.5 referenceSystem (CRS)</a>) and not after the coordinates have been compressed with the <code>"transform"</code> property (<a href="#transform-object">§ 4 Transform Object</a>).</p>
+Notice that these values are in the real-world coordinate system of the dataset (based on <a href="#referencesystem-crs">§ 5.5 referenceSystem (CRS)</a>) and have not been compressed with the <code>"transform"</code> member (<a href="#transform-object">§ 4 Transform Object</a>) as the <code>"vertices"</code> have been.</p>
 <pre class="language-json highlight"><c- f="">"metadata"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"geographicalExtent"</c-><c- p="">:</c-> <c- p="">[</c-> <c- mf="">84710.1</c-><c- p="">,</c-> <c- mf="">446846.0</c-><c- p="">,</c-> <c- mf="">-5.3</c-><c- p="">,</c-> <c- mf="">84757.1</c-><c- p="">,</c-> <c- mf="">446944.0</c-><c- p="">,</c-> <c- mf="">40.9</c-> <c- p="">]</c->
 <c- p="">}</c->
 </pre>
 <h3 class="heading settled" data-level="5.2" id="identifier"><span class="secno">5.2. </span><span class="content">identifier</span><a class="self-link" href="#identifier"></a></h3>
 <p>A unique identifier for the dataset.
-It is recommend to use <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">universally unique identifier</a>, but this is not necessary.</p>
+It is recommended to use a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">universally unique identifier</a>, but it is not obligatory.</p>
 <pre class="language-json highlight"><c- f="">"metadata"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"identifier"</c-><c- p="">:</c-> <c- u="">"44574905-d2d2-4f40-8e96-d39e1ae45f70"</c->
 <c- p="">}</c->
@@ -3174,7 +3173,7 @@ This is a JSON object that</p>
 <c- p="">}</c->
 </pre>
 <p>Be aware that the CRS should be a three-dimensional one, ie the elevation/height values should be with respect to a specific datum.</p>
-<div class="note" role="note"> Unlike in (City)GML where each object can have a different CRS (eg a wall of a building could theoretically have a different from the other walls used to represent the building), in CityJSON all the city objects need to be in the same CRS. </div>
+<div class="note" role="note"> Unlike in (City)GML where each object can have a different CRS (eg a wall of a building could theoretically have a different CRS from the other walls in the same the building), in CityJSON all the city objects need to be in the same CRS. </div>
 <h3 class="heading settled" data-level="5.6" id="title①"><span class="secno">5.6. </span><span class="content">title</span><a class="self-link" href="#title①"></a></h3>
 <p>A string describing the dataset.</p>
 <pre class="language-json highlight"><c- f="">"metadata"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -3214,14 +3213,14 @@ The material is represented with the <a href="http://www.web3d.org/documents/spe
 <c- p="">}</c->
 </pre>
 <h3 class="heading settled" data-level="6.1" id="geometry-object-having-material-s"><span class="secno">6.1. </span><span class="content">Geometry Object having material(s)</span><a class="self-link" href="#geometry-object-having-material-s"></a></h3>
-<p>Each surface in a Geometry Object can have one or more materials assigned to it. To store the material of a surface, a Geometry Object may have a member <code>"material"</code>, the value of this member is a collection of key-value pairs, where the key is the <em>theme</em> of the material, and the value is one JSON object that <strong>must</strong> contain either:</p>
+<p>Each surface in a Geometry Object can have one or more materials assigned to it. To store the material of a surface, a Geometry Object may have a member <code>"material"</code>. The value of this member is a collection of key-value pairs, where the key is the <em>theme</em> of the material, and the value is one JSON object that <strong>must</strong> contain either:</p>
 <ul>
 <li data-md="">
 <p>one member <code>"values"</code>. The value is a hierarchy of arrays with integers. Each integer refers to the position (0-based) in the <code>"materials"</code> member of the <code>"appearance"</code> member of the CityJSON object. If a surface has no material, then <code>null</code> should be used in the array. The depth of the array depends on the Geometry object, and is equal to the depth of the <code>"boundary"</code> array minus 2, because each surface (<code>[[]]</code>) gets one material.</p>
 </li><li data-md="">
 <p>one member <code>"value"</code>. The value is one integer referring to the position (0-based) in the <code>"materials"</code> member of the <code>"appearance"</code> member of the CityJSON object. This is used because often the materials are used to colour full objects, and repetition of materials is not necessary.</p>
 </li></ul>
-<p>In the following, the Solid has 4 surfaces, and there are 2 themes ("irradiation" and "irradiation-2"). These could represent, for instance, the different colours based on different scenarios of an solar irradiation analysis. Notice that the last surface gets no material (for both themes), thus <code>null</code> is used.</p>
+<p>In the following example, the Solid has 4 surfaces, and there are 2 themes ("irradiation" and "irradiation-2"). These could represent, for instance, the different colours based on different scenarios of an solar irradiation analysis. Notice that the last surface gets no material (for both themes), thus <code>null</code> is used.</p>
 <pre class="language-json highlight"><c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Solid"</c-><c- p="">,</c->
   <c- f="">"lod"</c-><c- p="">:</c-> <c- u="">"2.1"</c-><c- p="">,</c->
@@ -3239,9 +3238,9 @@ The material is represented with the <a href="http://www.web3d.org/documents/spe
 <c- p="">}</c->
 </pre>
 <h3 class="heading settled" data-level="6.2" id="geometry-object-having-texture-s"><span class="secno">6.2. </span><span class="content">Geometry Object having texture(s)</span><a class="self-link" href="#geometry-object-having-texture-s"></a></h3>
-<p>To store the texture(s) of a surface, a Geometry Object may have a member with the name <code>"texture"</code>, its value is a collection of key-value pairs, where the key is the <em>theme</em> of the textures, and the value is one JSON object that must contain one member <code>"values"</code>, which is a hierarchy of arrays with integers. For each ring of each surface, the first value refers to the position (0-based) in the <code>"textures"</code> member of the <code>"appearance"</code> member of the CityJSON object. The other indices refer to the UV positions of the corresponding vertices (as listed in the <code>"boundaries"</code> member of the geometry). Each array representing a ring therefore has one more value than that to store its vertices.</p>
+<p>To store the texture(s) of a surface, a Geometry Object may have a member with the name <code>"texture"</code>. Its value is a collection of key-value pairs, where the key is the <em>theme</em> of the textures, and the value is one JSON object that must contain one member <code>"values"</code>, which is a hierarchy of arrays with integers. For each ring of each surface, the first value refers to the position (0-based) in the <code>"textures"</code> member of the <code>"appearance"</code> member of the CityJSON object. The other indices refer to the UV positions of the corresponding vertices (as listed in the <code>"boundaries"</code> member of the geometry). Therefore, each array representing a ring has one more value than the number of vertices in the ring.</p>
 <p>The depth of the array depends on the Geometry object, and is equal to the depth of the <code>"boundary"</code> array.</p>
-<p>In the following, the Solid has 4 surfaces, and there are 2 themes: "winter-textures" and "summer-textures" could for instance represent the textures during winter and summer.. Notice that the last 2 surfaces of the first theme gets no material, thus the value <code>null</code> is used.</p>
+<p>In the following example, the Solid has 4 surfaces, and there are 2 themes: "winter-textures" and "summer-textures" could for instance represent the textures during winter and summer.. Notice that the last 2 surfaces of the first theme gets no material, thus the value <code>null</code> is used.</p>
 <pre class="language-json highlight"><c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Solid"</c-><c- p="">,</c->
   <c- f="">"lod"</c-><c- p="">:</c-> <c- u="">"2.2"</c-><c- p="">,</c->
@@ -3365,7 +3364,7 @@ Their position in this array (0-based) is used by the <code>"texture"</code> mem
 <c- p="">]</c->
 </pre>
 <h2 class="heading settled" data-level="7" id="handling-large-files"><span class="secno">7. </span><span class="content">Handling large files</span><a class="self-link" href="#handling-large-files"></a></h2>
-<p>Because CityJSON aims at being easy-to-use and developers friendly, it is advised to keep the size of CityJSON files small.
+<p>Because CityJSON aims at being easy-to-use and developer-friendly, it is advised to keep the size of CityJSON files small.
 Files of several hundreds of megabytes are bad practice, and should be avoided since users will have great difficulties visualising and manipulating them.</p>
 <h3 class="heading settled" data-level="7.1" id="decomposing-an-area-into-parts-tiles"><span class="secno">7.1. </span><span class="content">Decomposing an area into parts/tiles</span><a class="self-link" href="#decomposing-an-area-into-parts-tiles"></a></h3>
 <p>One solution to handle a large dataset is to subdivide it into tiles or regions, and ensure that each part has a reasonable size.
@@ -3441,7 +3440,7 @@ Unlike a CityJSON Object, all the vertices and appearances of the object are <em
 <p><code>"extensions"</code>: these should be placed in the metadata or collection</p>
 </li></ul>
 <p>Note that a CityJSON Feature Object does not contain all the information that is required for parsing the feature.
-Most commonly, the transformation properties (the Transform Object) and CRS need to be known by the client in order to correctly georeference the City Objects.
+Most commonly, the transformation properties (the Transform Object) and CRS must be known by the client in order to correctly georeference the City Objects.
 These properties may be known by the client upfront, or they may be accessible in a CityJSON Object, which is sent as the first object in a <a href="https://jsonlines.org/">JSON Lines text</a> stream, or in other ways not described here (for instance RESTful APIs often have a mechanism to retrieve metadata).</p>
 <p>In case the properties are stored in a CityJSON Object, this object needs to be a valid CityJSON Object.
 This implies that the CityJSON object must contain all the required properties, including <code>"CityObjects"</code> and <code>"vertices"</code>, even though they are empty, because this information is stored in the subsequent CityJSON Features.</p>
@@ -3457,7 +3456,7 @@ This implies that the CityJSON object must contain all the required properties, 
 <p>CityJSON uses <a href="http://json-schema.org/">JSON Schemas</a> to document and validate its data model, including its Extensions. Schemas offer a way to validate the syntax of a JSON document, and thus the possibility to require certain JSON members.
 Therefore, for writing more complex Extensions, a basic familiarity with <a href="http://json-schema.org/">JSON Schemas</a> is advised.</p>
 <p>A CityJSON <em>Extension</em> is a JSON file that documents how the core data model of CityJSON is extended, and it is also used for validating the CityJSON files.
-This is conceptually akin to the <a href="https://docs.ogc.org/is/20-010/20-010.html#toc66">Application Domain Extensions (ADEs)</a> in CityGML.</p>
+This is conceptually akin to, but not conformant with, the <a href="https://docs.ogc.org/is/20-010/20-010.html#toc66">Application Domain Extensions (ADEs)</a> in CityGML.</p>
 <p>A CityJSON Extension can extend the core data model in four ways:</p>
 <ol>
 <li data-md="">
@@ -3478,9 +3477,9 @@ This is conceptually akin to the <a href="https://docs.ogc.org/is/20-010/20-010.
   This is achieved by enforcing a set of 6 simple rules (see <a href="#rules-to-follow-to-define-new-city-objects">§ 8.7 Rules to follow to define new City Objects</a>) when adding new City Objects. 
   If these are followed, then a CityJSON file containing Extensions will be seen as a "standard" CityJSON file.</p>
 </div>
-<p>One of the philosophies of JSON is "schema-less", which means that one is allowed to define new properties for the JSON objects without documenting them in a JSON schema (watch out: this does <em>not</em> mean that JSON does not have schemas!).
+<p>One of the philosophies of JSON is being "schema-less", which means that one is allowed to define new properties for the JSON objects without documenting them in a JSON schema (watch out: this does <em>not</em> mean that JSON does not have schemas!).
 While this is in contrast to CityGML (and GML as a whole) where the schemas are central, the schemas of CityJSON are (partly) following that philosophy.</p>
-<p>If one wants to document the parcel area in square-meters for a <code>"Building"</code> (<code>"area-parcel": {"value": 437, "uom": "m2"}</code>), the easiest way is just to add a new property to the City Object attributes:</p>
+<p>If one wants to document the parcel area in square-meters for a <code>"Building"</code> (<code>"area-parcel": {"value": 437, "uom": "m2"}</code>), the easiest way is just to add a new member to the City Object attributes:</p>
 <pre class="language-json highlight"><c- p="">{</c->
   <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"Building"</c-><c- p="">,</c->
   <c- f="">"attributes"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -3565,8 +3564,8 @@ An example would be to reuse the Solid type:
 </pre>
 </div>
 <h3 class="heading settled" data-level="8.3" id="case-1-adding-new-properties-at-the-root-of-a-document"><span class="secno">8.3. </span><span class="content">Case 1: Adding new properties at the root of a document</span><a class="self-link" href="#case-1-adding-new-properties-at-the-root-of-a-document"></a></h3>
-<p>It is allowed to add a new property at the root of a CityJSON file, but if one wants to document it in a schema, then this property must start with a <code>"+"</code>.
-Imagine we wanted to store some census data for a given neighbourhood for which we have a CityJSON file, then we could define the extra root property <code>"+census"</code> as follows:</p>
+<p>It is allowed to add a new member at the root of a CityJSON file, but if one wants to document it in a schema, then the member’s name must start with a <code>"+"</code>.
+Imagine we wanted to store some census data for a given neighbourhood for which we have a CityJSON file, then we could define the extra root member <code>"+census"</code> as follows:</p>
 <pre class="language-json highlight"><c- f="">"extraRootProperties"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"+census"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"type"</c-><c- p="">:</c-> <c- u="">"object"</c-><c- p="">,</c->
@@ -3632,8 +3631,8 @@ Imagine we wanted to store some census data for a given neighbourhood for which 
 <p>For these two cases, the CityJSON Extension object would look like the snippet below.
 Notice that <code>"extraAttributes"</code> may have several properties (the types of the City Objects are the possibilities) and then each of these has as properties the new attributes (there can be several).</p>
 <p>An extra attribute must start with a <code>"+"</code>; it is good practice to prepend the attribute with the name of the Extension, to avoid that 2 attributes from 2 different Extensions have the same name.</p>
-<p>The value of the property is a JSON schema, this schema can reference and reuse JSON objects already defined in the CityJSON schemas.
-Thus, the keywords of the property values are defined by the JSON Schema specification.
+<p>The value of the member is a JSON schema, this schema can reference and reuse JSON objects already defined in the CityJSON schemas.
+Thus, the keywords of the member values are defined by the JSON Schema specification.
 For instance, <code>"additionalProperties"</code> is a JSON-schema keyword stating that one is not allowed to add properties to this JSON object, beyond the ones defined in the schema (eg <code>"value", "uom"</code>).</p>
 <pre class="language-json highlight"><c- f="">"extraAttributes"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"Building"</c-><c- p="">:</c-> <c- p="">{</c->
@@ -3678,7 +3677,7 @@ For instance, <code>"additionalProperties"</code> is a JSON-schema keyword stati
 <c- p="">}</c->
 </pre>
 <h3 class="heading settled" data-level="8.6" id="case-4-creating-and-or-extending-new-city-objects"><span class="secno">8.6. </span><span class="content">Case 4: Creating and/or extending new City Objects</span><a class="self-link" href="#case-4-creating-and-or-extending-new-city-objects"></a></h3>
-<p>The creation of a new City Object is done by defining it in the CityJSON Extension object in the <code>"extraCityObjects"</code> property:</p>
+<p>The creation of a new City Object is done by defining it in the CityJSON Extension object in the <code>"extraCityObjects"</code> member:</p>
 <pre class="language-json highlight"><c- f="">"extraCityObjects"</c-><c- p="">:</c-> <c- p="">{</c->
   <c- f="">"+NoiseBuilding"</c-><c- p="">:</c-> <c- p="">{</c->
     <c- f="">"allOf"</c-><c- p="">:</c-> <c- p="">[</c->
@@ -3719,7 +3718,7 @@ For instance, <code>"additionalProperties"</code> is a JSON-schema keyword stati
 </pre>
 <p>Since all City Objects are documented in the <a href="https://www.cityjson.org/schemas/">schemas of CityJSON</a> (in <code>cityobjects.schema.json</code>), it is basically a matter of copying the parts needed in a new file and modifying its content.</p>
 <p>A new name for the City Object must be given and it must begin with a <code>"+"</code>.</p>
-<p>Because City Objects can be of different levels (1st-level ones can exist by themselves; 2nd-level ones need to have a parent), we need to explicitly define that <code>"parents"</code> is mandatory for 2nd-level objects.</p>
+<p>Because City Objects can be of different levels (1st-level ones can exist by themselves; 2nd-level ones need to have a parent), we need to explicitly define that the <code>"parents"</code> member is mandatory for 2nd-level objects.</p>
 <p>Please note that since JSON schemas do not allow inheritance, the only way to extend a City Object is to define an entirely new one (with a new name, eg <code>"+NoiseBuilding"</code>).
 This is done by copying the schema of the parent City Object and extending it.</p>
 <h3 class="heading settled" data-level="8.7" id="rules-to-follow-to-define-new-city-objects"><span class="secno">8.7. </span><span class="content">Rules to follow to define new City Objects</span><a class="self-link" href="#rules-to-follow-to-define-new-city-objects"></a></h3>
@@ -3729,21 +3728,22 @@ While one could define a new City Object and document it, if this new object doe
 <li data-md="">
 <p>The name of a new City Object must begin with a <code>"+"</code>, eg <code>"+NoiseBuilding"</code>.</p>
 </li><li data-md="">
-<p>A new City Object must conform to the rules of CityJSON, ie it must contain a property <code>"type"</code>.</p>
+<p>A new City Object must conform to the rules of CityJSON, ie it must contain a member <code>"type"</code>.</p>
 </li><li data-md="">
-<p>Existing City Objects cannot be extended and have new types as children, eg it is not allowed to add a new City Object <code>"+Balcony"</code> to a <code>"Building"</code>. Instead, a new type, eg <code>"+FancyBuilding"</code>, should be created and it can have a <code>"+Balcony"</code> as a potential children.</p>
+<p>Existing City Objects cannot be extended and have new types as children, eg it is not allowed to add a new City Object <code>"+Balcony"</code> to a <code>"Building"</code>. Instead, a new type, eg <code>"+FancyBuilding"</code>, should be created and it can have a <code>"+Balcony"</code> as a potential child.</p>
 </li><li data-md="">
-<p>All the geometries must be in the property <code>"geometry"</code>, and cannot be located somewhere else deep in a hierarchy of a new property.</p>
+<p>All the geometries must be in the member <code>"geometry"</code>, and cannot be located somewhere else deep in a hierarchy of a new member.</p>
 </li><li data-md="">
 <p>The Geometry object’s boundary must be one of the eight types described in <a href="#geometry-objects">§ 3 Geometry Objects</a>. Similarly, the geometry appearances and templates must follow the core specification. This ensures that all the code written to process, manipulate, and view CityJSON files will be working without modifications.</p>
 </li><li data-md="">
 <p>The reuse of types defined in CityJSON, eg <code>"Solid"</code> or semantic surfaces, is allowed.</p>
 </li></ol>
-<h2 class="heading settled" data-level="9" id="cityjson-schemas"><span class="secno">9. </span><span class="content">CityJSON Schemas</span><a class="self-link" href="#cityjson-schemas"></a></h2>
+<h2 class="heading settled" data-level="9" id="cityjson-schemas"><span class="secno">9. </span><span class="content">CityJSON schemas</span><a class="self-link" href="#cityjson-schemas"></a></h2>
 <p>The <a href="https://json-schema.org/">JSON schemas</a> of the specifications are publicly available at <a href="https://cityjson.org/schemas/">https://cityjson.org/schemas/</a>.</p>
-<h2 class="heading settled" data-level="10" id="citygml-v30-conformance"><span class="secno">10. </span><span class="content">CityGML v3.0 conformance</span><a class="self-link" href="#citygml-v30-conformance"></a></h2>
-<p>CityJSON v2.0 is conformant with the <a href="https://docs.ogc.org/is/20-010/20-010.html">CityGML v3.0 data model</a>, although not all extension modules have been implemented.</p>
-<p>The details of which modules are supported (and where the so-called <em>null mapping</em> are applied, see <a href="https://docs.ogc.org/is/20-010/20-010.html#toc21">CityGML Modularization</a>), are available at <a href="https://www.cityjson.org/conformance/v30/">https://www.cityjson.org/conformance/v30/</a></p>
+<h2 class="heading settled" data-level="10" id="citygml-v30-implementation-details"><span class="secno">10. </span><span class="content">CityGML v3.0 implementation details</span><a class="self-link" href="#citygml-v30-implementation-details"></a></h2>
+<p>CityJSON v2.0 is a partial implementation of the <a href="https://docs.ogc.org/is/20-010/20-010.html">CityGML v3.0 data model</a>, although not all extension modules have been implemented.
+CityJSON v2.0 consistently implements actions #1, #2, and #3 of the profiling mechanism specified in <a href="https://docs.ogc.org/is/20-010/20-010.html#toc10">Section 2.1 of the CityGML v3.0 Conceptual Model</a>.</p>
+<p>The details of which modules are supported are available at <a href="https://www.cityjson.org/citygml/v30/">https://www.cityjson.org/citygml/v30/</a>.</p>
 <hr/>
 </main>
 <script>
